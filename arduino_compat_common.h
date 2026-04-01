@@ -4,6 +4,8 @@
 #include <stdint.h>
 #include "arduino_pinmap.h"
 
+#include "lowlevelprint.h"
+
 #if defined(STM32F411xE) && !defined(STM32F4xx)
 #define STM32F4xx
 #endif
