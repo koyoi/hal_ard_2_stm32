@@ -1,7 +1,7 @@
 #ifndef ARDUINO_WIRE_H
 #define ARDUINO_WIRE_H
 
-#include "../arduino_compat_common.h"
+#include "arduino_compat_common.h"
 #include "main.h"
 #include <stddef.h>
 #include <stdint.h>

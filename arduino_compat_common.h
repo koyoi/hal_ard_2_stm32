@@ -2,6 +2,17 @@
 #define ARDUINO_COMPAT_COMMON_H
 
 #include <stdint.h>
+#include "arduino_pinmap.h"
+
+#if defined(STM32F411xE) && !defined(STM32F4xx)
+#define STM32F4xx
+#endif
+
+// Arduino headers usually typedef `byte` as `uint8_t`. FixMath expects this
+// alias, so provide it here when compiling without Arduino.
+#ifndef byte
+typedef uint8_t byte;
+#endif
 
 // Arduino-like constants
 #ifndef HIGH

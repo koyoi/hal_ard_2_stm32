@@ -1,7 +1,7 @@
 #ifndef ARDUINO_SPI_H
 #define ARDUINO_SPI_H
 
-#include "../arduino_compat_common.h"
+#include "arduino_compat_common.h"
 #include "main.h"
 #include <stddef.h>
 #include <stdint.h>
