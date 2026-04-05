@@ -55,7 +55,6 @@ uint32_t millis(void);
 uint32_t micros(void);
 void delay(uint32_t ms);
 void delayMicroseconds(uint32_t us);
-void Arduino_AttachADCHandle(ADC_HandleTypeDef *handle);
 
 #ifdef __cplusplus
 }
