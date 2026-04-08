@@ -1,5 +1,9 @@
 #include "arduino_compat_common.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 uint32_t millis(void) {
   return HAL_GetTick();
 }
@@ -27,3 +31,7 @@ void delayMicroseconds(uint32_t us) {
     __NOP();
   }
 }
+
+#ifdef __cplusplus
+}
+#endif
