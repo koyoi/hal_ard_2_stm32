@@ -17,11 +17,28 @@ public:
   void beginTransmission(uint8_t address);
   size_t write(uint8_t data);
   size_t write(const uint8_t *data, size_t len);
+
+  // 同期版
   uint8_t endTransmission(uint8_t sendStop = 1U);
+
+  // 非同期(DMA)版
+  uint8_t endTransmissionAsync(uint8_t sendStop = 1U);
 
   uint8_t requestFrom(uint8_t address, uint8_t quantity, uint8_t sendStop = 1U);
   int available();
   int read();
+
+  // DMA送信状態確認
+  bool txBusy() const;
+  bool txDone() const;
+  bool txError() const;
+  uint32_t txErrorCode() const;
+
+  bool ownsHandle(I2C_HandleTypeDef *handle) const;
+
+  // HAL callback から呼ばれる
+  void onTxCplt();
+  void onError();
 
 private:
   static const size_t TX_BUFFER_SIZE = 64U;
@@ -35,6 +52,11 @@ private:
   size_t m_rxLen;
   size_t m_rxIndex;
   uint32_t m_timeoutMs;
+
+  volatile bool m_txBusy;
+  volatile bool m_txDone;
+  volatile bool m_txError;
+  volatile uint32_t m_txErrorCode;
 };
 
 extern TwoWire Wire;
